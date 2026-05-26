@@ -1,6 +1,5 @@
 // File: src/index.js
 // Muat konfigurasi (sekaligus memuat .env via config/index.js)
-
 const config = require('./config');
 const express = require('express');
 const routes = require('./routes');

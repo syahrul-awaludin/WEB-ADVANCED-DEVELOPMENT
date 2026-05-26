@@ -22,9 +22,9 @@ const getInfo = (req, res) => {
         environment: config.env,
         node: process.version,
         endpoints: [
-            { method: 'GET', path: '/health', description: 'Health check' },
-            { method: 'GET', path: '/api/info', description: 'APIinformation' },
-            { method: 'GET', path: '/api/echo/:msg', description: 'Echo amessage' },
+            { method: 'GET', path: '/health', description: 'Healthcheck' },
+            { method: 'GET', path: '/api/info', description: 'API information' },
+            { method: 'GET', path: '/api/echo/:msg', description: 'Echo a message' },
         ],
     });
 };
