@@ -5,7 +5,6 @@ const ctrl = require('../controllers/tasks.controller');
 const validate = require('../middleware/validate');
 const {
   createTaskSchema,
-  replaceTaskSchema,
   updateTaskSchema,
   listTasksSchema,
 } = require('../validators/task.validator');
@@ -102,34 +101,8 @@ router.post('/', validate(createTaskSchema, 'body'), ctrl.createTask);
  */
 router.get('/:id', ctrl.getTask);
 
-/**
- * @swagger
- * /tasks/{id}:
- *   put:
- *     summary: Ganti seluruh data task (full replace)
- *     tags: [Tasks]
- *     parameters:
- *       - in: path
- *         name: id
- *         required: true
- *         schema:
- *           type: integer
- *         description: ID task
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/CreateTask'
- *     responses:
- *       200:
- *         description: Task berhasil diperbarui
- *       400:
- *         description: Data tidak valid
- *       404:
- *         description: Task tidak ditemukan
- */
-router.put('/:id', validate(replaceTaskSchema, 'body'), ctrl.replaceTask);
+
+
 
 /**
  * @swagger
