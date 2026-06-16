@@ -11,7 +11,10 @@ const options = {
       version: config.version,
       description: 'REST API untuk capstone project Web Advanced Development.',
     },
-    servers: [{ url: `http://localhost:${config.port}/api/v1`, description: 'Local Dev' }],
+    servers: [
+      { url: `http://localhost:${config.port}/api/v1`, description: 'Local Dev (Protected)' },
+      { url: `http://localhost:${config.port}`, description: 'Local Dev (Auth)' },
+    ],
     components: {
       schemas: {
         CreateTask: {
@@ -59,8 +62,18 @@ const options = {
           },
         },
       },
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
     },
-    tags: [{ name: 'Tasks', description: 'Operasi CRUD untuk resource Task' }],
+    tags: [
+      { name: 'Auth', description: 'Endpoint autentikasi (register, login, refresh, logout)' },
+      { name: 'Tasks', description: 'Operasi CRUD untuk resource Task' },
+    ],
   },
   // swagger-jsdoc akan membaca JSDoc comment dari file-file ini
   apis: ['./src/routes/*.js'],
